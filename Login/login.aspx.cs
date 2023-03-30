@@ -11,10 +11,15 @@ namespace Login
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
         {
 
         }
