@@ -27,13 +27,19 @@
     <form id="form1" runat="server">
         <p class="auto-style1">
             Login</p>
-        Username:
-        <input id="txtUsername" type="text" /><p>
-            &nbsp;</p>
-        Password:
-        <input id="txtPassword" type="text" /><p>
-            &nbsp;</p>
-        <asp:Button ID="btnSubmit" runat="server" OnClick="Button1_Click" Text="Submit" />
+        <p>
+            <asp:Label ID="lblMessage" runat="server"></asp:Label>
+        </p>
+        <p>
+        <asp:Label ID="lblUserName" runat="server" Text="UserName:"></asp:Label>
+        <asp:TextBox runat="server" ID="txtUserName"></asp:TextBox>
+            </p>
+        <p><asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>
+        <asp:TextBox runat="server" ID="txtPassword"></asp:TextBox>
+            <asp:Button ID="btnLogin" runat="server" OnClick="BtnLogin_Click" Text="Login" />
+        </p>
+
+
     </form>
 </body>
 </html>
