@@ -15,40 +15,37 @@ namespace Login
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(modGlobal.ConStr);
-            try
+            void validate(string UserName, string Password)
             {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("select * from logindb where username='"+ txtUserName.Text+"' and password ='"+ txtPassword.Text+"'");
-                SqlDataReader sdr = cmd.ExecuteReader();
-                if (sdr.Read())
+                modGlobal.ValidateConnection(UserName, Password);
+
+                try
                 {
-                    lblMessage.Text = "Login Sucess......!!";
-                    lblMessage.ForeColor = System.Drawing.Color.Black;
+
+                    if (true)
+                    {
+                        lblMessage.Text = "Login Sucess......!!";
+                        lblMessage.ForeColor = System.Drawing.Color.Black;
+                    }
+                    else
+                    {
+                        lblMessage.Text = "UserId & Password Is not correct Try again..!!";
+                        lblMessage.ForeColor = System.Drawing.Color.Red;
+                    }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    lblMessage.Text = "UserId & Password Is not correct Try again..!!";
+                    lblMessage.Text = ex.Message;
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                 }
 
             }
-            catch (Exception ex)
-            {
-                lblMessage.Text= ex.Message;
-                lblMessage.ForeColor = System.Drawing.Color.Red;
-            }
-            finally
-            {
-                con.Close();
-                con.Dispose();
-            }
-        
         }
     }
 }
