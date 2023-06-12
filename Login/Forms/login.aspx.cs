@@ -20,14 +20,10 @@ namespace Login
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
-            void validate(string UserName, string Password)
-            {
-                modGlobal.ValidateConnection(UserName, Password);
-
+        //insert code here to check if textboxes are empty
                 try
                 {
-
-                    if (true)
+                    if (ValidateLogin(txtUserName.Text, txtPassword.Text))
                     {
                         lblMessage.Text = "Login Sucess......!!";
                         lblMessage.ForeColor = System.Drawing.Color.Black;
@@ -37,15 +33,18 @@ namespace Login
                         lblMessage.Text = "UserId & Password Is not correct Try again..!!";
                         lblMessage.ForeColor = System.Drawing.Color.Red;
                     }
-
                 }
                 catch (Exception ex)
                 {
                     lblMessage.Text = ex.Message;
                     lblMessage.ForeColor = System.Drawing.Color.Red;
-                }
+                }           
+        }
+        
+        protected bool ValidateLogin(string UserName, string Password)
+            {
+                return modGlobal.ValidateConnection(UserName, Password);
 
             }
-        }
     }
 }
