@@ -43,7 +43,8 @@ namespace Login
         
         protected bool ValidateLogin(string UserName, string Password)
             {
-                return modGlobal.ValidateConnection(UserName, Password);
+                modGlobal objGlobal = new modGlobal();
+                return objGlobal.ValidateConnection(UserName, Password);
 
             }
     }
