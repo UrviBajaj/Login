@@ -13,7 +13,7 @@ namespace Login
     {
        private static string ConStr  = WebConfigurationManager.ConnectionStrings["dbconnection"].ToString();
        private static SqlConnection con = new SqlConnection(ConStr);
-        public static bool ValidateConnection(string UserName, string Password)
+        public bool ValidateConnection(string UserName, string Password)
         {
               con.Open();
               SqlCommand cmd = new SqlCommand("select * from logindb where username='" + UserName + "' and password ='" + Password + "'");
