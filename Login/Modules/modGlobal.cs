@@ -16,12 +16,14 @@ namespace Login
         public bool ValidateConnection(string UserName, string Password)
         {
               con.Open();
-              SqlCommand cmd = new SqlCommand("select * from logindb where username='" + UserName + "' and password ='" + Password + "'");
-              SqlDataReader sdr = cmd.ExecuteReader();
+              //SqlCommand cmd = new SqlCommand("select * from logindb where username='" + UserName + "' and password ='" + Password + "'");
+               da = new SQLDataAdapter("select * from logindb where username='" + UserName + "' and password ='" + Password + "'",con);
+              DataSet ds = new DataSet();
+            da.Fill(ds);
             try
             {
 
-                if (sdr.Read())
+                if (ds.Tables[0].Rows.Count>0)
                 {
                     return true;
                 }
@@ -33,6 +35,8 @@ namespace Login
             }
             finally
             {
+                da.Dispose();
+                ds.Dispose();
                 con.Close();
                 con.Dispose();
             }
