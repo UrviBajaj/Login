@@ -15,7 +15,7 @@ namespace Login
        private static SqlConnection con = new SqlConnection(ConStr);
         public bool ValidateConnection(string UserName, string Password)
         {
-              con.Open();
+              //con.Open();
               //SqlCommand cmd = new SqlCommand("select * from logindb where username='" + UserName + "' and password ='" + Password + "'");
                da = new SQLDataAdapter("select * from logindb where username='" + UserName + "' and password ='" + Password + "'",con);
               DataSet ds = new DataSet();
