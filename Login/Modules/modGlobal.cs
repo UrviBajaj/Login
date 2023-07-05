@@ -11,8 +11,8 @@ namespace Login
 {
     public class modGlobal
     {
-       private static string ConStr  = WebConfigurationManager.ConnectionStrings["dbconnection"].ToString();
-       private static SqlConnection con = new SqlConnection(ConStr);
+       private string ConStr  = WebConfigurationManager.ConnectionStrings["dbconnection"].ToString();
+       private SqlConnection con = new SqlConnection(ConStr);
         public bool ValidateConnection(string UserName, string Password)
         {
               //con.Open();
