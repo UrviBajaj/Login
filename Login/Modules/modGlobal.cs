@@ -16,10 +16,19 @@ namespace Login
         public bool ValidateConnection(string UserName, string Password)
         {
               //con.Open();
-              //SqlCommand cmd = new SqlCommand("select * from logindb where username='" + UserName + "' and password ='" + Password + "'");
-               da = new SQLDataAdapter("select * from logindb where username='" + UserName + "' and password ='" + Password + "'",con);
+              SqlCommand cmd = new SqlCommand("usp_Login");
+              SqlCommand.CommandType = CommandType.StoredProcedure;
+              SqlCommand.Connection = SqlConnection;
+                        List<SqlParameter> ParameterList = new List<SqlParameter>()
+            {
+                        new SqlParameter() { ParameterName = "@UserName", SqlDbType = SqlDbType.nVarChar, Size=50, Value = UserName },
+                        new SqlParameter() { ParameterName = "@Password", SqlDbType = SqlDbType.nVarChar, Size=50, Value = Password },
+            }
+            SqlCommand.Parameters.AddRange(ParameterList.ToArray());
+               //da = new SQLDataAdapter("select * from logindb where username='" + UserName + "' and password ='" + Password + "'",con);
+            da= new SQLDataAdapter(SqlCommand);
               DataSet ds = new DataSet();
-            da.Fill(ds);
+            da.Fill(ds,"UserLogin");
             try
             {
 
